@@ -83,3 +83,79 @@
         /* --- SECTIONS & UI --- */
         #timer-box {
             background: white;
+
+<div id="timer-box">
+            <div class="timer-unit"><span class="timer-num" id="days">00</span><span class="timer-label">Days</span></div>
+            <div class="timer-unit"><span class="timer-num" id="hours">00</span><span class="timer-label">Hours</span></div>
+            <div class="timer-unit"><span class="timer-num" id="mins">00</span><span class="timer-label">Mins</span></div>
+            <div class="timer-unit"><span class="timer-num" id="secs">00</span><span class="timer-label">Secs</span></div>
+        </div>
+    </header>
+
+    <section class="section" id="details">
+        <h2>Event Details</h2>
+        <div style="margin-bottom: 35px;">
+            <p><strong style="color: var(--royal-purple); letter-spacing: 1px;">RECEPTION</strong><br>
+            Thursday, 28-May-2026 | 6:00 PM Onwards<br>
+            <strong>Venue:</strong> Ranjan Mahal, Poigai, Vellore</p>
+            <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">Navigate to Mahal</a>
+        </div>
+        <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); width: 30%; margin: 25px auto;">
+        <div style="margin-top: 25px;">
+            <p><strong style="color: var(--royal-purple); letter-spacing: 1px;">MARRIAGE</strong><br>
+            Friday, 29-May-2026 | 6:30 AM <br> 
+            <strong>Venue:</strong> Vellore Fort Temple</p>
+            <a href="https://share.google/q5qngUrx8wuOqvQAw" target="_blank" class="btn">Navigate to Temple</a>
+        </div>
+    </section>
+
+    <section class="section" id="rsvp" style="background-color: #fcfaff; border-color: var(--royal-purple);">
+        <h2>RSVP</h2>
+        <p>We look forward to celebrating with you.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpmHc4kP5G3FfzuSjM17U2vxWOTuV9x1Ix0Md1-ZniEpWNaw/viewform" target="_blank" class="btn">Confirm Attendance</a>
+    </section>
+
+    <div id="musicControl" onclick="toggleMusic()">
+        <span id="musicIcon">🎵</span>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="#home">HOME</a>
+        <a href="#details">DETAILS</a>
+        <a href="#rsvp">RSVP</a>
+    </nav>
+
+    <script>
+        const weddingDate = new Date("May 29, 2026 06:30:00").getTime();
+        
+        setInterval(function() {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById("days").innerHTML = d.toString().padStart(2, '0');
+                document.getElementById("hours").innerHTML = h.toString().padStart(2, '0');
+                document.getElementById("mins").innerHTML = m.toString().padStart(2, '0');
+                document.getElementById("secs").innerHTML = s.toString().padStart(2, '0');
+            }
+        }, 1000);
+
+        function toggleMusic() {
+            const music = document.getElementById("weddingMusic");
+            const icon = document.getElementById("musicIcon");
+            if (music.paused) {
+                music.play();
+                icon.innerHTML = "⏸️";
+            } else {
+                music.pause();
+                icon.innerHTML = "🎵";
+            }
+        }
+    </script>
+</body>
+</html>
