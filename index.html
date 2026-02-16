@@ -9,21 +9,21 @@
         :root {
             --gold: #D4AF37;
             --royal-purple: #6A0DAD;
-            --marigold-orange: #FF8C00;
-            --marigold-yellow: #FFD700;
+            --rose-red: #E31E24;
+            --jasmine-white: #FFFFFF;
             --bg-cream: #FFFCF5;
         }
 
         body { 
             font-family: 'Montserrat', sans-serif; 
-            margin: 0; padding-bottom: 80px; 
+            margin: 0; padding-bottom: 100px; 
             text-align: center; 
             background: var(--bg-cream);
             color: #333;
             overflow-x: hidden;
         }
 
-        /* --- DECORATIVE BACKGROUND (FLOWERS & DIYAS) --- */
+        /* --- FLORAL BACKGROUND ANIMATION --- */
         .decor-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -31,44 +31,16 @@
             pointer-events: none;
         }
 
-        /* Marigold Flower CSS */
         .flower {
             position: absolute;
-            width: 20px; height: 20px;
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: float 10s infinite linear;
-        }
-        .flower::after {
-            content: "✿";
-            font-size: 25px;
-            position: absolute;
-            top: 0; left: 0;
+            opacity: 0;
+            animation: floatDown 12s infinite linear;
         }
 
-        /* Small Diya CSS */
-        .mini-diya {
-            position: absolute;
-            width: 30px; height: 20px;
-            background: #8B4513;
-            border-radius: 0 0 50px 50px;
-            opacity: 0.7;
-            animation: float 12s infinite linear;
-        }
-        .mini-diya::before {
-            content: "";
-            position: absolute;
-            top: -12px; left: 10px;
-            width: 10px; height: 15px;
-            background: orange;
-            border-radius: 50% 50% 20% 20%;
-            box-shadow: 0 0 10px gold;
-        }
-
-        @keyframes float {
+        @keyframes floatDown {
             0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
             100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
 
@@ -95,6 +67,7 @@
             align-items: center;
             gap: 15px;
             color: var(--royal-purple);
+            margin-bottom: 10px;
         }
 
         .golden-j {
@@ -105,7 +78,7 @@
             filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1));
         }
 
-        /* --- FIXED TIMER --- */
+        /* --- TIMER --- */
         #timer-box {
             background: white;
             display: inline-flex;
@@ -121,12 +94,13 @@
         .timer-num { font-size: 1.8rem; font-weight: bold; color: var(--royal-purple); }
         .timer-label { font-size: 0.6rem; text-transform: uppercase; color: #888; }
 
+        /* --- SECTIONS --- */
         .section { 
             background: white;
             margin: 20px auto; 
             max-width: 500px; 
-            padding: 35px 20px; 
-            border-radius: 20px;
+            padding: 35px 25px; 
+            border-radius: 25px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             box-shadow: 0 5px 20px rgba(0,0,0,0.03);
             position: relative;
@@ -142,7 +116,10 @@
             display: inline-block; 
             margin: 10px 5px; 
             font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
+        .btn:hover { background: #4B0082; transform: translateY(-2px); }
 
         .bottom-nav {
             position: fixed; bottom: 0; width: 100%;
@@ -167,7 +144,7 @@
             <span style="font-size: 0.6em; opacity: 0.5;">&</span>
             <span><span class="golden-j">J</span>anani</span>
         </div>
-        <div style="letter-spacing: 5px; font-weight: 300; color: #666; margin-top: 10px;"> 28 MAY 2026</div>
+        <div style="letter-spacing: 5px; font-weight: 300; color: #666;"> 28 MAY 2026</div>
 
         <div id="timer-box">
             <div class="timer-unit"><span class="timer-num" id="days">00</span><span class="timer-label">Days</span></div>
@@ -178,42 +155,52 @@
     </header>
 
     <section class="section" id="details">
-        <h2 style="font-family: 'Great Vibes'; font-size: 2.8rem; color: var(--royal-purple); margin: 0 0 15px;">Event Details</h2>
-        <p><strong>RECEPTION</strong><br>Thursday, 28-May-2026 | 6:00 PM<br>Ranjan Mahal, Vellore</p>
-        <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">View Location</a>
-        <hr style="opacity: 0.1; margin: 25px auto; width: 60%;">
-        <p><strong>MARRIAGE</strong><br>Friday, 29-May-2026 | 6:30 AM<br>Vellore Fort Temple</p>
+        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-purple); margin-top: 0;">Event Details</h2>
+        
+        <p><strong>RECEPTION</strong><br>Thursday, 28-May-2026 | 6:00 PM<br>Ranjan Mahal, Poigai, Vellore</p>
+        <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">Navigate to Mahal</a>
+        
+        <hr style="opacity: 0.1; margin: 30px auto; width: 60%;">
+        
+        <p><strong>MARRIAGE</strong><br>Friday, 29-May-2026 | 6:30 AM<br>Vellore Fort Temple, Vellore</p>
+        <a href="https://share.google/q5qngUrx8wuOqvQAw" target="_blank" class="btn">Navigate to Temple</a>
+    </section>
+
+    <section class="section" id="rsvp">
+        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-purple); margin-top: 0;">RSVP</h2>
+        <p>Please let us know if you can make it!</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpmHc4kP5G3FfzuSjM17U2vxWOTuV9x1Ix0Md1-ZniEpWNaw/viewform" target="_blank" class="btn">Confirm Attendance</a>
     </section>
 
     <nav class="bottom-nav">
         <a href="#home">HOME</a>
         <a href="#details">DETAILS</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpmHc4kP5G3FfzuSjM17U2vxWOTuV9x1Ix0Md1-ZniEpWNaw/viewform">RSVP</a>
+        <a href="#rsvp">RSVP</a>
     </nav>
 
     <script>
-        // Generate Marigolds and Mini Diyas
+        // Generate Red Roses and White Jasmine Flowers
         const decorField = document.getElementById('decorField');
-        const colors = ['#FF8C00', '#FFD700']; // Orange and Yellow
+        const flowers = [
+            { char: '🌹', color: '#E31E24' }, // Rose
+            { char: '💮', color: '#FFFFFF' }, // Jasmine/Malli
+            { char: '🌸', color: '#FFB6C1' }  // Divine flower
+        ];
 
-        for (let i = 0; i < 40; i++) {
-            const isFlower = Math.random() > 0.3;
+        for (let i = 0; i < 35; i++) {
+            const flowerType = flowers[Math.floor(Math.random() * flowers.length)];
             const item = document.createElement('div');
-            
-            if (isFlower) {
-                item.className = 'flower';
-                item.style.color = colors[Math.floor(Math.random() * colors.length)];
-            } else {
-                item.className = 'mini-diya';
-            }
-
+            item.className = 'flower';
+            item.innerHTML = flowerType.char;
+            item.style.color = flowerType.color;
             item.style.left = Math.random() * 100 + '%';
-            item.style.animationDelay = Math.random() * 10 + 's';
-            item.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            item.style.animationDelay = Math.random() * 12 + 's';
+            item.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            item.style.filter = "drop-shadow(2px 2px 5px rgba(0,0,0,0.1))";
             decorField.appendChild(item);
         }
 
-        // Timer Function
+        // Countdown Timer
         const weddingDate = new Date("May 29, 2026 06:30:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
