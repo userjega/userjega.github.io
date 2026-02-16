@@ -16,75 +16,115 @@
             font-family: 'Montserrat', sans-serif; 
             margin: 0; padding-bottom: 80px; 
             text-align: center; 
-            background: #fffcf5;
+            background: linear-gradient(135deg, #fffcf5 0%, #f7e9d7 100%);
+            background-attachment: fixed;
             overflow-x: hidden;
             color: var(--text-dark);
         }
 
-        /* --- SHARED INITIAL DESIGN --- */
-        .name-wrapper {
+        /* HEADER & TEXT STYLES */
+        .invitation-top {
+            background-color: var(--royal-purple);
+            color: white;
+            padding: 16px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             position: relative;
-            display: inline-block;
-            margin: 60px auto 20px;
-            padding: 20px 40px; /* Provides space so the 'J' tail isn't cut */
-            min-height: 180px;
+            z-index: 10;
         }
 
-        .shared-initial {
-            font-family: 'Great Vibes', cursive;
+        header { padding: 60px 20px; position: relative; z-index: 1; }
+
+        h1 { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: clamp(3rem, 10vw, 4.5rem); 
+            color: var(--royal-purple); 
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        /* GOLDEN "J" INITIAL */
+        .golden-initial {
             background: linear-gradient(to bottom, #FFD700 0%, #D4AF37 40%, #B8860B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 180px;
-            line-height: 1;
+            font-size: 1.2em; 
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.15));
             display: inline-block;
-            filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.15));
-            position: relative;
-            z-index: 2;
+            padding: 0 12px;
+            margin-right: -12px;
+            vertical-align: baseline;
         }
+        
+        h2 { color: var(--royal-purple); font-family: 'Great Vibes', cursive; font-size: 3rem; margin-bottom: 10px; }
 
-        .name-suffix {
-            font-family: 'Great Vibes', cursive;
-            color: var(--royal-purple);
-            font-size: 60px;
-            position: absolute;
-            white-space: nowrap;
-            z-index: 3;
-        }
-
-        /* Positioning Jegadeesan above the 'J' stem */
-        .suffix-top {
-            top: 25px;
-            left: 140px;
-        }
-
-        /* Positioning Janani below the 'J' curve */
-        .suffix-bottom {
-            bottom: 35px;
-            left: 140px;
-        }
-
-        .ampersand {
-            position: absolute;
-            font-family: 'Great Vibes', cursive;
-            color: var(--royal-purple);
-            font-size: 30px;
-            left: 145px;
-            top: 85px;
-        }
-
-        .date-sub {
-            letter-spacing: 5px;
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-top: -20px;
-        }
-
-        /* --- SECTIONS & UI --- */
         #timer-box {
             background: white;
+            display: inline-flex;
+            padding: 20px 30px;
+            border-radius: 60px;
+            box-shadow: 0 10px 25px rgba(106, 13, 173, 0.1);
+            margin: 30px 0;
+            border: 1px solid var(--gold-accent);
+        }
+        .timer-unit { margin: 0 10px; }
+        .timer-num { display: block; font-size: 1.6rem; font-weight: bold; color: var(--royal-purple); }
+        .timer-label { font-size: 0.65rem; text-transform: uppercase; color: #888; font-weight: 600; }
 
-<div id="timer-box">
+        /* SECTION STYLES */
+        .section { 
+            position: relative; z-index: 1;
+            padding: 40px 20px; 
+            background: rgba(255, 255, 255, 0.95); 
+            margin: 25px auto;
+            max-width: 600px;
+            border-radius: 20px; 
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+
+        .btn { 
+            background: var(--royal-purple); color: white; padding: 14px 25px; 
+            text-decoration: none; border-radius: 35px; display: inline-block; 
+            margin: 15px 5px; font-weight: bold; transition: 0.3s ease;
+        }
+        .btn:hover { background: #520a87; transform: translateY(-2px); }
+
+        /* NAVIGATION BAR */
+        .bottom-nav {
+            position: fixed; bottom: 0; width: 100%;
+            background: white; display: flex; justify-content: space-around;
+            padding: 18px 0; border-top: 1px solid var(--gold-accent);
+            z-index: 1000;
+        }
+        .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
+
+        #musicControl {
+            position: fixed; bottom: 95px; right: 25px;
+            background: white; border: 1.5px solid var(--gold-accent);
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="weddingMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="invitation-top" id="home">
+        You are cordially invited for the Wedding Reception of
+    </div>
+
+    <header>
+        <h1><span class="golden-initial">J</span>egadeesan & <span class="golden-initial">J</span>anani</h1>
+        <div style="font-size: 1.4rem; letter-spacing: 5px; color: var(--text-dark); margin-top: 5px; font-weight: 300;">MAY 2026</div>
+        
+        <div id="timer-box">
             <div class="timer-unit"><span class="timer-num" id="days">00</span><span class="timer-label">Days</span></div>
             <div class="timer-unit"><span class="timer-num" id="hours">00</span><span class="timer-label">Hours</span></div>
             <div class="timer-unit"><span class="timer-num" id="mins">00</span><span class="timer-label">Mins</span></div>
