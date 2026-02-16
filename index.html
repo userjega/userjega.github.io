@@ -21,7 +21,7 @@
             color: var(--text-dark);
         }
 
-        /* --- TOP MESSAGE (RESTORED) --- */
+        /* --- TOP MESSAGE --- */
         .invitation-top {
             background-color: var(--royal-purple);
             color: white;
@@ -33,109 +33,100 @@
             line-height: 1.4;
         }
 
-        /* --- SHARED INITIAL DESIGN (FIXED CLIPPING) --- */
-        .name-wrapper {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin: 80px auto 40px; /* Increased margin for top/bottom breathing room */
-            padding: 40px 100px; /* Massive horizontal padding to prevent side cuts */
-            min-height: 280px;
-            overflow: visible; /* CRITICAL: Allows J flourishes to exist outside the box */
+        /* --- HEADER & SEPARATE INITIALS --- */
+        header { 
+            padding: 40px 10px; 
+            overflow: visible; /* Prevents J flourishes from being cut */
         }
 
-        .shared-initial {
+        .names-display {
             font-family: 'Great Vibes', cursive;
+            color: var(--royal-purple);
+            font-size: clamp(2.8rem, 8vw, 4.5rem);
+            line-height: 1.2;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .initial-group {
+            display: inline-flex;
+            align-items: baseline;
+            overflow: visible;
+        }
+
+        .golden-j {
             background: linear-gradient(to bottom, #FFD700 0%, #D4AF37 40%, #B8860B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: clamp(200px, 35vw, 260px); 
-            line-height: 1;
+            font-size: 1.3em; /* Larger than the rest of the name */
+            filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.15));
+            padding-right: 2px;
             display: inline-block;
-            filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.18));
-            position: relative;
-            transform: scale(1.1); /* Ensures the whole shape is rendered clearly */
-            z-index: 10;
-        }
-
-        .names-stack {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            margin-left: -30px; /* Overlaps slightly with J stem as per design */
-            text-align: left;
-            padding-top: 15px;
-            z-index: 11;
-        }
-
-        .name-suffix {
-            font-family: 'Great Vibes', cursive;
-            color: var(--royal-purple);
-            font-size: clamp(55px, 11vw, 85px);
-            white-space: nowrap;
-            line-height: 0.9;
-            margin-bottom: 5px;
         }
 
         .ampersand {
-            font-family: 'Great Vibes', cursive;
-            color: var(--royal-purple);
-            font-size: 45px;
-            margin: -5px 0 -5px 15px;
+            padding: 0 15px;
+            font-size: 0.8em;
             opacity: 0.8;
         }
 
         .date-sub {
-            letter-spacing: 8px;
-            font-size: 1.3rem;
+            letter-spacing: 5px;
+            font-size: 1.2rem;
             font-weight: 300;
-            margin-top: 20px;
+            margin-top: 5px;
             text-transform: uppercase;
         }
 
-        /* --- UI COMPONENTS --- */
+        /* --- TIMER --- */
         #timer-box {
             background: white;
             display: inline-flex;
-            padding: 20px 30px;
-            border-radius: 60px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            margin: 40px 0;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 30px 0;
             border: 1px solid var(--gold-accent);
         }
-        .timer-unit { margin: 0 12px; }
-        .timer-num { display: block; font-size: 1.8rem; font-weight: bold; color: var(--royal-purple); }
-        .timer-label { font-size: 0.65rem; text-transform: uppercase; color: #888; }
+        .timer-unit { margin: 0 10px; }
+        .timer-num { display: block; font-size: 1.6rem; font-weight: bold; color: var(--royal-purple); }
+        .timer-label { font-size: 0.6rem; text-transform: uppercase; color: #888; }
 
+        /* --- SECTIONS --- */
         .section { 
             background: white; 
-            margin: 25px auto; 
-            max-width: 550px; 
-            padding: 40px 25px; 
-            border-radius: 25px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin: 20px auto; 
+            max-width: 500px; 
+            padding: 35px 20px; 
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.25);
         }
 
         .btn { 
             background: var(--royal-purple); 
             color: white; 
-            padding: 14px 32px; 
+            padding: 12px 28px; 
             text-decoration: none; 
-            border-radius: 40px; 
+            border-radius: 30px; 
             display: inline-block; 
             margin: 10px 5px; 
             font-weight: 600;
+            transition: 0.3s;
         }
+        .btn:hover { background: #520a87; transform: translateY(-2px); }
 
+        /* --- NAVIGATION --- */
         .bottom-nav {
             position: fixed; bottom: 0; width: 100%;
             background: white; display: flex; justify-content: space-around;
-            padding: 20px 0; border-top: 1px solid var(--gold-accent);
+            padding: 18px 0; border-top: 1px solid var(--gold-accent);
             z-index: 1000;
         }
-        .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.85rem; font-weight: 600; }
+        .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.8rem; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -145,14 +136,14 @@
     </div>
 
     <header>
-        <div class="name-wrapper">
-            <span class="shared-initial">J</span>
-            
-            <div class="names-stack">
-                <span class="name-suffix">egadeesan</span>
-                <span class="ampersand">&</span>
-                <span class="name-suffix">anani</span>
-            </div>
+        <div class="names-display">
+            <span class="initial-group">
+                <span class="golden-j">J</span>egadeesan
+            </span>
+            <span class="ampersand">&</span>
+            <span class="initial-group">
+                <span class="golden-j">J</span>anani
+            </span>
         </div>
         
         <div class="date-sub">MAY 2026</div>
@@ -166,17 +157,17 @@
     </header>
 
     <section class="section" id="details">
-        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-purple);">Event Details</h2>
+        <h2 style="font-family: 'Great Vibes'; font-size: 2.5rem; color: var(--royal-purple);">Event Details</h2>
         <p><strong>RECEPTION</strong><br>Thursday, 28-May-2026 | 6:00 PM<br>Ranjan Mahal, Poigai, Vellore</p>
         <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">Navigate to Mahal</a>
-        <hr style="opacity: 0.15; margin: 30px auto; width: 50%;">
+        <hr style="opacity: 0.1; margin: 25px auto; width: 50%;">
         <p><strong>MARRIAGE</strong><br>Friday, 29-May-2026 | 6:30 AM<br>Vellore Fort Temple</p>
         <a href="https://share.google/q5qngUrx8wuOqvQAw" target="_blank" class="btn">Navigate to Temple</a>
     </section>
 
     <section class="section" id="rsvp">
-        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-purple);">RSVP</h2>
-        <p>We await your presence.</p>
+        <h2 style="font-family: 'Great Vibes'; font-size: 2.5rem; color: var(--royal-purple);">RSVP</h2>
+        <p>We look forward to celebrating with you.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpmHc4kP5G3FfzuSjM17U2vxWOTuV9x1Ix0Md1-ZniEpWNaw/viewform" target="_blank" class="btn">Confirm Attendance</a>
     </section>
 
