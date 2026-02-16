@@ -85,4 +85,129 @@
         }
         .timer-unit { margin: 0 12px; }
         .timer-num { display: block; font-size: 1.6rem; font-weight: bold; color: var(--royal-purple); }
-        .timer-label { font-size: 0.65rem; text-transform: uppercase; color: #
+        .timer-label { font-size: 0.65rem; text-transform: uppercase; color: #888; font-weight: 600; }
+
+        .section { 
+            position: relative; z-index: 1;
+            padding: 50px 20px; 
+            background: rgba(255, 255, 255, 0.95); 
+            margin: 25px auto;
+            max-width: 600px;
+            border-radius: 20px; 
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+
+        .btn { 
+            background: var(--royal-purple); color: white; padding: 14px 30px; 
+            text-decoration: none; border-radius: 35px; display: inline-block; 
+            margin: 15px 5px; font-weight: bold; transition: 0.3s ease;
+            box-shadow: 0 4px 15px rgba(106, 13, 173, 0.2);
+        }
+        .btn:hover { background: #520a87; transform: translateY(-2px); }
+
+        #musicControl {
+            position: fixed; bottom: 95px; right: 25px;
+            background: white; border: 1.5px solid var(--gold-accent);
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 2000; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .bottom-nav {
+            position: fixed; bottom: 0; width: 100%;
+            background: white; display: flex; justify-content: space-around;
+            padding: 18px 0; border-top: 1px solid var(--gold-accent);
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.05); z-index: 1000;
+        }
+        .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+    <audio id="weddingMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="invitation-top" id="home">
+        You are invited for the Wedding Reception
+    </div>
+
+    <header>
+        <div style="font-size: 1.3rem; letter-spacing: 4px; color: #888; font-weight: 300; margin-bottom: 10px;">SAVE THE DATE</div>
+        <h1>Jegadeesan & Janani</h1>
+        <div style="font-size: 1.4rem; letter-spacing: 5px; color: var(--text-dark); margin-top: 5px;">MAY 28, 2026</div>
+
+        <div id="timer-box">
+            <div class="timer-unit"><span class="timer-num" id="days">00</span><span class="timer-label">Days</span></div>
+            <div class="timer-unit"><span class="timer-num" id="hours">00</span><span class="timer-label">Hours</span></div>
+            <div class="timer-unit"><span class="timer-num" id="mins">00</span><span class="timer-label">Mins</span></div>
+            <div class="timer-unit"><span class="timer-num" id="secs">00</span><span class="timer-label">Secs</span></div>
+        </div>
+    </header>
+
+    <section class="section" id="details">
+        <h2>The Celebration</h2>
+        
+        <div style="margin-bottom: 35px;">
+            <p><strong style="color: var(--royal-purple); letter-spacing: 1px;">RECEPTION</strong><br>May 28, 6:00 PM Onwards<br>The Ranjan Mahal, Poigai, Vellore</p>
+            <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">Navigate to Mahal</a>
+        </div>
+        
+        <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); width: 30%; margin: 25px auto;">
+
+        <div style="margin-top: 25px;">
+            <p><strong style="color: var(--royal-purple); letter-spacing: 1px;">MARRIAGE</strong><br>May 28, 6:30 AM<br>Vellore Fort Temple</p>
+            <a href="https://share.google/q5qngUrx8wuOqvQAw" target="_blank" class="btn">Navigate to Temple</a>
+        </div>
+    </section>
+
+    <section class="section" id="rsvp" style="background-color: #fcfaff; border-color: var(--royal-purple);">
+        <h2>RSVP</h2>
+        <p>Kindly respond by May 1st. We look forward to celebrating with you.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpmHc4kP5G3FfzuSjM17U2vxWOTuV9x1Ix0Md1-ZniEpWNaw/viewform" class="btn">Confirm Attendance</a>
+    </section>
+
+    <div id="musicControl" onclick="toggleMusic()">
+        <span id="musicIcon">🎵</span>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="#home">HOME</a>
+        <a href="#details">DETAILS</a>
+        <a href="#rsvp">RSVP</a>
+    </nav>
+
+    <script>
+        const weddingDate = new Date("May 28, 2026 06:30:00").getTime();
+        setInterval(function() {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById("days").innerHTML = d;
+            document.getElementById("hours").innerHTML = h;
+            document.getElementById("mins").innerHTML = m;
+            document.getElementById("secs").innerHTML = s;
+        }, 1000);
+
+        function toggleMusic() {
+            const music = document.getElementById("weddingMusic");
+            const icon = document.getElementById("musicIcon");
+            if (music.paused) {
+                music.play();
+                icon.innerHTML = "⏸️";
+                document.getElementById("musicControl").style.animation = "pulse 2s infinite";
+            } else {
+                music.pause();
+                icon.innerHTML = "🎵";
+                document.getElementById("musicControl").style.animation = "none";
+            }
+        }
+    </script>
+</body>
+</html>
