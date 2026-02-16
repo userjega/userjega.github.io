@@ -123,7 +123,29 @@
 
     </section>
 
+    <script>
+        // Set the countdown date
+        const weddingDate = new Date("May 28, 2026 06:30:00").getTime();
 
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
 
-    <section class="section">
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = 
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s to go";
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "The Celebration has Begun!";
+            }
+        }, 1000);
+    </script>
+        <section class="section">
         <p>With the blessings of Lord Muruga, we invite you to celebrate our union.</p
+</body>
+</html>
