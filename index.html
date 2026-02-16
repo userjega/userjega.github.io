@@ -16,131 +16,70 @@
             font-family: 'Montserrat', sans-serif; 
             margin: 0; padding-bottom: 80px; 
             text-align: center; 
-            background: linear-gradient(135deg, #fffcf5 0%, #f7e9d7 100%);
-            background-attachment: fixed;
+            background: #fffcf5;
             overflow-x: hidden;
             color: var(--text-dark);
         }
 
-        .invitation-top {
-            background-color: var(--royal-purple);
-            color: white;
-            padding: 16px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        /* --- SHARED INITIAL DESIGN --- */
+        .name-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 60px auto 20px;
+            padding: 20px 40px; /* Provides space so the 'J' tail isn't cut */
+            min-height: 180px;
         }
 
-        header { padding: 40px 10px; position: relative; }
-
-        /* SHARED SINGLE J LAYOUT */
-        .name-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .shared-initial {
             font-family: 'Great Vibes', cursive;
-            color: var(--royal-purple);
-            gap: 0;
-            margin: 20px 0;
-        }
-
-        .shared-j {
             background: linear-gradient(to bottom, #FFD700 0%, #D4AF37 40%, #B8860B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: clamp(5rem, 15vw, 7.5rem); 
+            font-size: 180px;
             line-height: 1;
-            padding: 0 15px; /* Prevents cutting */
-            filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.15));
+            display: inline-block;
+            filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.15));
+            position: relative;
+            z-index: 2;
         }
 
-        .name-part {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            line-height: 0.9;
+        .name-suffix {
+            font-family: 'Great Vibes', cursive;
+            color: var(--royal-purple);
+            font-size: 60px;
+            position: absolute;
+            white-space: nowrap;
+            z-index: 3;
+        }
+
+        /* Positioning Jegadeesan above the 'J' stem */
+        .suffix-top {
+            top: 25px;
+            left: 140px;
+        }
+
+        /* Positioning Janani below the 'J' curve */
+        .suffix-bottom {
+            bottom: 35px;
+            left: 140px;
         }
 
         .ampersand {
-            font-size: 0.5em;
-            margin: 5px 0;
-            opacity: 0.7;
+            position: absolute;
+            font-family: 'Great Vibes', cursive;
+            color: var(--royal-purple);
+            font-size: 30px;
+            left: 145px;
+            top: 85px;
         }
 
+        .date-sub {
+            letter-spacing: 5px;
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-top: -20px;
+        }
+
+        /* --- SECTIONS & UI --- */
         #timer-box {
             background: white;
-            display: inline-flex;
-            padding: 20px 30px;
-            border-radius: 60px;
-            box-shadow: 0 10px 25px rgba(106, 13, 173, 0.1);
-            margin: 30px 0;
-            border: 1px solid var(--gold-accent);
-        }
-        .timer-unit { margin: 0 10px; }
-        .timer-num { display: block; font-size: 1.6rem; font-weight: bold; color: var(--royal-purple); }
-        .timer-label { font-size: 0.65rem; text-transform: uppercase; color: #888; font-weight: 600; }
-
-        .section { 
-            padding: 40px 20px; 
-            background: rgba(255, 255, 255, 0.95); 
-            margin: 25px auto;
-            max-width: 600px;
-            border-radius: 20px; 
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .btn { 
-            background: var(--royal-purple); color: white; padding: 14px 25px; 
-            text-decoration: none; border-radius: 35px; display: inline-block; 
-            margin: 15px 5px; font-weight: bold; transition: 0.3s ease;
-        }
-
-        .bottom-nav {
-            position: fixed; bottom: 0; width: 100%;
-            background: white; display: flex; justify-content: space-around;
-            padding: 18px 0; border-top: 1px solid var(--gold-accent);
-            z-index: 1000;
-        }
-        .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.8rem; font-weight: 600; }
-    </style>
-</head>
-<body>
-
-    <div class="invitation-top" id="home">
-        Wedding Reception Invitation
-    </div>
-
-    <header>
-        <div class="name-container">
-            <span class="shared-j">J</span>
-            <div class="name-part">
-                <span>egadeesan</span>
-                <span class="ampersand">&</span>
-                <span>anani</span>
-            </div>
-        </div>
-        
-        <div style="font-size: 1.4rem; letter-spacing: 5px; color: var(--text-dark); margin-top: 5px; font-weight: 300;">MAY 2026</div>
-        
-        <div id="timer-box">
-            <div class="timer-unit"><span class="timer-num" id="days">00</span><span class="timer-label">Days</span></div>
-            <div class="timer-unit"><span class="timer-num" id="hours">00</span><span class="timer-label">Hours</span></div>
-            <div class="timer-unit"><span class="timer-num" id="mins">00</span><span class="timer-label">Mins</span></div>
-            <div class="timer-unit"><span class="timer-num" id="secs">00</span><span class="timer-label">Secs</span></div>
-        </div>
-    </header>
-
-    <section class="section" id="details">
-        <h2>Event Details</h2>
-        <p><strong>RECEPTION</strong><br>Thursday, 28-May-2026 | 6:00 PM<br>Ranjan Mahal, Poigai, Vellore</p>
-        <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">Navigate to Mahal</a>
-        <hr style="margin: 25px auto; width: 30%; opacity: 0.2;">
-        <p><strong>MARRIAGE</strong><br>Friday, 29-May-2026 | 6:30 AM<br>Vellore Fort Temple</p>
-        <a href="https://share.google/q5qngUrx8wuOqvQAw" target="_blank" class="btn">Navigate to Temple</a>
-    </section>
-
-    <section class="section" id="rsvp">
-        <h2>RSVP</h2>
-        <a href="
