@@ -8,7 +8,6 @@
     <style>
         :root {
             --gold-accent: #FFD700;
-            --soft-saffron: #FFB347;
             --royal-purple: #6A0DAD;
             --text-dark: #333;
         }
@@ -23,7 +22,6 @@
             color: var(--text-dark);
         }
 
-        /* DIVINE LIGHTS GRAPHICS */
         body::before {
             content: "";
             position: fixed;
@@ -53,26 +51,25 @@
             z-index: 10;
         }
 
-        header { 
-            padding: 80px 20px;
-            position: relative;
-            z-index: 1;
-        }
+        header { padding: 60px 20px; position: relative; z-index: 1; }
 
         h1 { 
             font-family: 'Great Vibes', cursive; 
-            font-size: 4rem; 
+            font-size: clamp(3rem, 10vw, 4.5rem); 
             color: var(--royal-purple); 
             margin: 10px 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* GOLDEN INITIAL STYLE */
+        .golden-initial {
+            background: linear-gradient(to bottom, #FFD700 0%, #D4AF37 50%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.1em;
+            filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.1));
         }
         
-        h2 { 
-            color: var(--royal-purple); 
-            font-family: 'Great Vibes', cursive; 
-            font-size: 3rem; 
-            margin-bottom: 10px;
-        }
+        h2 { color: var(--royal-purple); font-family: 'Great Vibes', cursive; font-size: 3rem; margin-bottom: 10px; }
 
         #timer-box {
             background: white;
@@ -83,26 +80,24 @@
             margin: 30px 0;
             border: 1px solid var(--gold-accent);
         }
-        .timer-unit { margin: 0 12px; }
+        .timer-unit { margin: 0 10px; }
         .timer-num { display: block; font-size: 1.6rem; font-weight: bold; color: var(--royal-purple); }
         .timer-label { font-size: 0.65rem; text-transform: uppercase; color: #888; font-weight: 600; }
 
         .section { 
             position: relative; z-index: 1;
-            padding: 50px 20px; 
+            padding: 40px 20px; 
             background: rgba(255, 255, 255, 0.95); 
             margin: 25px auto;
             max-width: 600px;
             border-radius: 20px; 
             border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         }
 
         .btn { 
-            background: var(--royal-purple); color: white; padding: 14px 30px; 
+            background: var(--royal-purple); color: white; padding: 14px 25px; 
             text-decoration: none; border-radius: 35px; display: inline-block; 
             margin: 15px 5px; font-weight: bold; transition: 0.3s ease;
-            box-shadow: 0 4px 15px rgba(106, 13, 173, 0.2);
         }
         .btn:hover { background: #520a87; transform: translateY(-2px); }
 
@@ -111,16 +106,16 @@
             background: white; border: 1.5px solid var(--gold-accent);
             width: 50px; height: 50px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 2000; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            cursor: pointer; z-index: 2000;
         }
 
         .bottom-nav {
             position: fixed; bottom: 0; width: 100%;
             background: white; display: flex; justify-content: space-around;
             padding: 18px 0; border-top: 1px solid var(--gold-accent);
-            box-shadow: 0 -2px 15px rgba(0,0,0,0.05); z-index: 1000;
+            z-index: 1000;
         }
-        .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
+        .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.8rem; font-weight: 600; }
 
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
     </style>
@@ -136,8 +131,8 @@
     </div>
 
     <header>
-        <h1>Jegadeesan & Janani</h1>
-        <div style="font-size: 1.4rem; letter-spacing: 5px; color: var(--text-dark); margin-top: 5px;">MAY 28, 2026</div>
+        <h1><span class="golden-initial">J</span>egadeesan & <span class="golden-initial">J</span>anani</h1>
+        <div style="font-size: 1.4rem; letter-spacing: 5px; color: var(--text-dark); margin-top: 5px;">MAY 2026</div>
         <div id="timer-box">
             <div class="timer-unit"><span class="timer-num" id="days">00</span><span class="timer-label">Days</span></div>
             <div class="timer-unit"><span class="timer-num" id="hours">00</span><span class="timer-label">Hours</span></div>
@@ -148,16 +143,17 @@
 
     <section class="section" id="details">
         <h2>Event Details</h2>
-        
         <div style="margin-bottom: 35px;">
-            <p><strong style="color: var(--royal-purple); letter-spacing: 1px;">RECEPTION</strong><br>On Thursday, 28-May-2026 6:00 PM Onwards<br>Venue: Ranjan Mahal, Poigai, Vellore</p>
+            <p><strong style="color: var(--royal-purple); letter-spacing: 1px;">RECEPTION</strong><br>
+            Thursday, 28-May-2026 | 6:00 PM Onwards<br>
+            <strong>Venue:</strong> Ranjan Mahal, Poigai, Vellore</p>
             <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">Navigate to Mahal</a>
         </div>
-        
         <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); width: 30%; margin: 25px auto;">
-
         <div style="margin-top: 25px;">
-            <p><strong style="color: var(--royal-purple); letter-spacing: 1px;">MARRIAGE</strong><br>Friday, 29-May-2026, 6:30 AM <br> Venue: Vellore Fort Temple</p>
+            <p><strong style="color: var(--royal-purple); letter-spacing: 1px;">MARRIAGE</strong><br>
+            Friday, 29-May-2026 | 6:30 AM <br> 
+            <strong>Venue:</strong> Vellore Fort Temple</p>
             <a href="https://share.google/q5qngUrx8wuOqvQAw" target="_blank" class="btn">Navigate to Temple</a>
         </div>
     </section>
@@ -179,18 +175,20 @@
     </nav>
 
     <script>
-        const weddingDate = new Date("May 28, 2026 06:30:00").getTime();
+        const weddingDate = new Date("May 29, 2026 06:30:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
             const diff = weddingDate - now;
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById("days").innerHTML = d;
-            document.getElementById("hours").innerHTML = h;
-            document.getElementById("mins").innerHTML = m;
-            document.getElementById("secs").innerHTML = s;
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById("days").innerHTML = d.toString().padStart(2, '0');
+                document.getElementById("hours").innerHTML = h.toString().padStart(2, '0');
+                document.getElementById("mins").innerHTML = m.toString().padStart(2, '0');
+                document.getElementById("secs").innerHTML = s.toString().padStart(2, '0');
+            }
         }, 1000);
 
         function toggleMusic() {
