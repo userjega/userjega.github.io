@@ -21,7 +21,7 @@
             color: var(--text-dark);
         }
 
-        /* --- TOP MESSAGE --- */
+        /* --- TOP MESSAGE (RESTORED) --- */
         .invitation-top {
             background-color: var(--royal-purple);
             color: white;
@@ -39,10 +39,10 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 60px auto 20px;
-            padding: 60px 80px; /* Massive padding to allow font flourishes to extend */
-            min-height: 250px;
-            overflow: visible; /* Ensures top/bottom of J isn't cut */
+            margin: 80px auto 40px; /* Increased margin for top/bottom breathing room */
+            padding: 40px 100px; /* Massive horizontal padding to prevent side cuts */
+            min-height: 280px;
+            overflow: visible; /* CRITICAL: Allows J flourishes to exist outside the box */
         }
 
         .shared-initial {
@@ -50,12 +50,13 @@
             background: linear-gradient(to bottom, #FFD700 0%, #D4AF37 40%, #B8860B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: clamp(180px, 30vw, 240px); /* Massive Shared J */
-            line-height: 0.8; /* Pulls the J up slightly */
+            font-size: clamp(200px, 35vw, 260px); 
+            line-height: 1;
             display: inline-block;
             filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.18));
             position: relative;
-            z-index: 2;
+            transform: scale(1.1); /* Ensures the whole shape is rendered clearly */
+            z-index: 10;
         }
 
         .names-stack {
@@ -63,33 +64,34 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            margin-left: -35px; /* Adjusts the text closer to the J stem */
+            margin-left: -30px; /* Overlaps slightly with J stem as per design */
             text-align: left;
-            padding-top: 20px;
+            padding-top: 15px;
+            z-index: 11;
         }
 
         .name-suffix {
             font-family: 'Great Vibes', cursive;
             color: var(--royal-purple);
-            font-size: clamp(50px, 10vw, 75px);
+            font-size: clamp(55px, 11vw, 85px);
             white-space: nowrap;
-            line-height: 1.1; /* Added breathing room between names */
+            line-height: 0.9;
+            margin-bottom: 5px;
         }
 
         .ampersand {
             font-family: 'Great Vibes', cursive;
             color: var(--royal-purple);
-            font-size: 40px;
-            margin: 0 0 0 10px;
+            font-size: 45px;
+            margin: -5px 0 -5px 15px;
             opacity: 0.8;
-            line-height: 1;
         }
 
         .date-sub {
-            letter-spacing: 6px;
-            font-size: 1.2rem;
+            letter-spacing: 8px;
+            font-size: 1.3rem;
             font-weight: 300;
-            margin-top: 10px;
+            margin-top: 20px;
             text-transform: uppercase;
         }
 
@@ -105,7 +107,7 @@
         }
         .timer-unit { margin: 0 12px; }
         .timer-num { display: block; font-size: 1.8rem; font-weight: bold; color: var(--royal-purple); }
-        .timer-label { font-size: 0.65rem; text-transform: uppercase; color: #888; letter-spacing: 1px; }
+        .timer-label { font-size: 0.65rem; text-transform: uppercase; color: #888; }
 
         .section { 
             background: white; 
@@ -114,7 +116,6 @@
             padding: 40px 25px; 
             border-radius: 25px;
             border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
 
         .btn { 
@@ -124,21 +125,17 @@
             text-decoration: none; 
             border-radius: 40px; 
             display: inline-block; 
-            margin: 12px 6px; 
+            margin: 10px 5px; 
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
         }
-        .btn:hover { transform: translateY(-2px); background: #520a87; }
 
-        /* --- NAVIGATION --- */
         .bottom-nav {
             position: fixed; bottom: 0; width: 100%;
             background: white; display: flex; justify-content: space-around;
             padding: 20px 0; border-top: 1px solid var(--gold-accent);
             z-index: 1000;
         }
-        .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; }
+        .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.85rem; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -169,7 +166,7 @@
     </header>
 
     <section class="section" id="details">
-        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-purple); margin-top: 0;">Event Details</h2>
+        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-purple);">Event Details</h2>
         <p><strong>RECEPTION</strong><br>Thursday, 28-May-2026 | 6:00 PM<br>Ranjan Mahal, Poigai, Vellore</p>
         <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">Navigate to Mahal</a>
         <hr style="opacity: 0.15; margin: 30px auto; width: 50%;">
@@ -178,8 +175,8 @@
     </section>
 
     <section class="section" id="rsvp">
-        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-purple); margin-top: 0;">RSVP</h2>
-        <p>We await your presence at our celebration.</p>
+        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-purple);">RSVP</h2>
+        <p>We await your presence.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpmHc4kP5G3FfzuSjM17U2vxWOTuV9x1Ix0Md1-ZniEpWNaw/viewform" target="_blank" class="btn">Confirm Attendance</a>
     </section>
 
