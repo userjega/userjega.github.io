@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation | Jegadeesan&Janani</title>
+    <title>Wedding Invitation | Jegadeesan & Janani</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -22,60 +22,52 @@
             color: var(--text-dark);
         }
 
-        /* DIVINE LIGHTS BACKGROUND */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(255,215,0,0.12) 1%, transparent 20%);
-            background-size: 150px 150px;
-            pointer-events: none;
-            z-index: 0;
-            animation: divineShimmer 15s linear infinite;
-        }
-
-        @keyframes divineShimmer {
-            0% { background-position: 0 0; opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { background-position: 300px 300px; opacity: 0.5; }
-        }
-
         .invitation-top {
             background-color: var(--royal-purple);
             color: white;
-            padding: 14px;
+            padding: 16px;
             font-weight: 600;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            position: relative;
-            z-index: 10;
         }
 
-        header { padding: 60px 20px; position: relative; z-index: 1; }
+        header { padding: 40px 10px; position: relative; }
 
-        h1 { 
-            font-family: 'Great Vibes', cursive; 
-            font-size: clamp(3rem, 10vw, 4.5rem); 
-            color: var(--royal-purple); 
-            margin: 10px 0;
-            line-height: 1.4; /* Added height to prevent vertical cutting */
+        /* SHARED SINGLE J LAYOUT */
+        .name-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Great Vibes', cursive;
+            color: var(--royal-purple);
+            gap: 0;
+            margin: 20px 0;
         }
 
-        /* FIXED GOLDEN "J" INITIAL STYLE */
-        .golden-initial {
+        .shared-j {
             background: linear-gradient(to bottom, #FFD700 0%, #D4AF37 40%, #B8860B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.2em; 
-            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.15));
-            display: inline-block;
-            padding: 0 5px; /* Fixed: Prevents the J flourishes from cutting */
-            margin-right: -5px; /* Pulls the next letter closer for a natural flow */
-            vertical-align: baseline;
+            font-size: clamp(5rem, 15vw, 7.5rem); 
+            line-height: 1;
+            padding: 0 15px; /* Prevents cutting */
+            filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.15));
         }
-        
-        h2 { color: var(--royal-purple); font-family: 'Great Vibes', cursive; font-size: 3rem; margin-bottom: 10px; }
+
+        .name-part {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            line-height: 0.9;
+        }
+
+        .ampersand {
+            font-size: 0.5em;
+            margin: 5px 0;
+            opacity: 0.7;
+        }
 
         #timer-box {
             background: white;
@@ -91,7 +83,6 @@
         .timer-label { font-size: 0.65rem; text-transform: uppercase; color: #888; font-weight: 600; }
 
         .section { 
-            position: relative; z-index: 1;
             padding: 40px 20px; 
             background: rgba(255, 255, 255, 0.95); 
             margin: 25px auto;
@@ -105,15 +96,6 @@
             text-decoration: none; border-radius: 35px; display: inline-block; 
             margin: 15px 5px; font-weight: bold; transition: 0.3s ease;
         }
-        .btn:hover { background: #520a87; transform: translateY(-2px); }
-
-        #musicControl {
-            position: fixed; bottom: 95px; right: 25px;
-            background: white; border: 1.5px solid var(--gold-accent);
-            width: 50px; height: 50px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 2000;
-        }
 
         .bottom-nav {
             position: fixed; bottom: 0; width: 100%;
@@ -122,22 +104,24 @@
             z-index: 1000;
         }
         .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.8rem; font-weight: 600; }
-
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
 
-    <audio id="weddingMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="invitation-top" id="home">
-        You are cordially invited for the Wedding Reception of
+        Wedding Reception Invitation
     </div>
 
     <header>
-        <h1><span class="golden-initial">J</span>egadeesan & <span class="golden-initial">J</span>anani</h1>
+        <div class="name-container">
+            <span class="shared-j">J</span>
+            <div class="name-part">
+                <span>egadeesan</span>
+                <span class="ampersand">&</span>
+                <span>anani</span>
+            </div>
+        </div>
+        
         <div style="font-size: 1.4rem; letter-spacing: 5px; color: var(--text-dark); margin-top: 5px; font-weight: 300;">MAY 2026</div>
         
         <div id="timer-box">
@@ -150,71 +134,13 @@
 
     <section class="section" id="details">
         <h2>Event Details</h2>
-        <div style="margin-bottom: 35px;">
-            <p><strong style="color: var(--royal-purple); letter-spacing: 1px;">RECEPTION</strong><br>
-            Thursday, 28-May-2026 | 6:00 PM Onwards<br>
-            <strong>Venue:</strong> Ranjan Mahal, Poigai, Vellore</p>
-            <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">Navigate to Mahal</a>
-        </div>
-        <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); width: 30%; margin: 25px auto;">
-        <div style="margin-top: 25px;">
-            <p><strong style="color: var(--royal-purple); letter-spacing: 1px;">MARRIAGE</strong><br>
-            Friday, 29-May-2026 | 6:30 AM <br> 
-            <strong>Venue:</strong> Vellore Fort Temple</p>
-            <a href="https://share.google/q5qngUrx8wuOqvQAw" target="_blank" class="btn">Navigate to Temple</a>
-        </div>
+        <p><strong>RECEPTION</strong><br>Thursday, 28-May-2026 | 6:00 PM<br>Ranjan Mahal, Poigai, Vellore</p>
+        <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">Navigate to Mahal</a>
+        <hr style="margin: 25px auto; width: 30%; opacity: 0.2;">
+        <p><strong>MARRIAGE</strong><br>Friday, 29-May-2026 | 6:30 AM<br>Vellore Fort Temple</p>
+        <a href="https://share.google/q5qngUrx8wuOqvQAw" target="_blank" class="btn">Navigate to Temple</a>
     </section>
 
-    <section class="section" id="rsvp" style="background-color: #fcfaff; border-color: var(--royal-purple);">
+    <section class="section" id="rsvp">
         <h2>RSVP</h2>
-        <p>We look forward to celebrating with you.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpmHc4kP5G3FfzuSjM17U2vxWOTuV9x1Ix0Md1-ZniEpWNaw/viewform" class="btn">Confirm Attendance</a>
-    </section>
-
-    <div id="musicControl" onclick="toggleMusic()">
-        <span id="musicIcon">🎵</span>
-    </div>
-
-    <nav class="bottom-nav">
-        <a href="#home">HOME</a>
-        <a href="#details">DETAILS</a>
-        <a href="#rsvp">RSVP</a>
-    </nav>
-
-    <script>
-        // Set countdown to the Marriage ceremony on May 29th
-        const weddingDate = new Date("May 29, 2026 06:30:00").getTime();
-        
-        setInterval(function() {
-            const now = new Date().getTime();
-            const diff = weddingDate - now;
-            
-            if (diff > 0) {
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
-                
-                document.getElementById("days").innerHTML = d.toString().padStart(2, '0');
-                document.getElementById("hours").innerHTML = h.toString().padStart(2, '0');
-                document.getElementById("mins").innerHTML = m.toString().padStart(2, '0');
-                document.getElementById("secs").innerHTML = s.toString().padStart(2, '0');
-            }
-        }, 1000);
-
-        function toggleMusic() {
-            const music = document.getElementById("weddingMusic");
-            const icon = document.getElementById("musicIcon");
-            if (music.paused) {
-                music.play();
-                icon.innerHTML = "⏸️";
-                document.getElementById("musicControl").style.animation = "pulse 2s infinite";
-            } else {
-                music.pause();
-                icon.innerHTML = "🎵";
-                document.getElementById("musicControl").style.animation = "none";
-            }
-        }
-    </script>
-</body>
-</html>
+        <a href="
