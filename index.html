@@ -7,83 +7,94 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold-accent: #D4AF37;
+            --gold: #D4AF37;
             --royal-purple: #6A0DAD;
-            --text-dark: #333;
+            --marigold-orange: #FF8C00;
+            --marigold-yellow: #FFD700;
+            --bg-cream: #FFFCF5;
         }
 
         body { 
             font-family: 'Montserrat', sans-serif; 
             margin: 0; padding-bottom: 80px; 
             text-align: center; 
-            background: linear-gradient(135deg, #fffcf5 0%, #fdf2e9 100%);
-            color: var(--text-dark);
+            background: var(--bg-cream);
+            color: #333;
             overflow-x: hidden;
         }
 
-        /* --- VIBRANT ELEMENTS --- */
-        .stars-container {
+        /* --- DECORATIVE BACKGROUND (FLOWERS & DIYAS) --- */
+        .decor-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 0;
             pointer-events: none;
         }
 
-        .star {
+        /* Marigold Flower CSS */
+        .flower {
             position: absolute;
-            background: var(--gold-accent);
+            width: 20px; height: 20px;
             border-radius: 50%;
-            opacity: 0.3;
-            animation: twinkle var(--duration) infinite ease-in-out;
+            opacity: 0.6;
+            animation: float 10s infinite linear;
+        }
+        .flower::after {
+            content: "✿";
+            font-size: 25px;
+            position: absolute;
+            top: 0; left: 0;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.4); }
+        /* Small Diya CSS */
+        .mini-diya {
+            position: absolute;
+            width: 30px; height: 20px;
+            background: #8B4513;
+            border-radius: 0 0 50px 50px;
+            opacity: 0.7;
+            animation: float 12s infinite linear;
+        }
+        .mini-diya::before {
+            content: "";
+            position: absolute;
+            top: -12px; left: 10px;
+            width: 10px; height: 15px;
+            background: orange;
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 10px gold;
         }
 
-        .diya-row {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px 0;
-            position: relative;
-            z-index: 2;
+        @keyframes float {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
 
-        .diya-svg {
-            width: 50px;
-            filter: drop-shadow(0 0 8px rgba(255, 69, 0, 0.4));
-        }
-
-        /* --- TOP MESSAGE --- */
+        /* --- CONTENT STYLING --- */
         .invitation-top {
             background: var(--royal-purple);
             color: white;
             padding: 15px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            position: relative;
+            z-index: 10;
         }
 
-        /* --- HEADER & SEPARATE INITIALS --- */
-        header { padding: 30px 10px; position: relative; z-index: 5; }
+        header { padding: 40px 10px; position: relative; z-index: 5; }
 
         .names-display {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.5rem, 7vw, 4rem);
-            margin: 15px 0;
+            font-size: clamp(2.8rem, 8vw, 4.5rem);
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
             color: var(--royal-purple);
-        }
-
-        .initial-group {
-            display: inline-flex;
-            align-items: baseline;
         }
 
         .golden-j {
@@ -92,7 +103,6 @@
             -webkit-text-fill-color: transparent;
             font-size: 1.4em;
             filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1));
-            padding-right: 2px;
         }
 
         /* --- FIXED TIMER --- */
@@ -102,41 +112,25 @@
             justify-content: center;
             padding: 20px 25px;
             border-radius: 50px;
-            border: 1px solid var(--gold-accent);
-            box-shadow: 0 10px 25px rgba(106, 13, 173, 0.1);
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             margin: 30px 0;
             gap: 15px;
         }
+        .timer-unit { display: flex; flex-direction: column; min-width: 60px; }
+        .timer-num { font-size: 1.8rem; font-weight: bold; color: var(--royal-purple); }
+        .timer-label { font-size: 0.6rem; text-transform: uppercase; color: #888; }
 
-        .timer-unit {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 60px;
-        }
-
-        .timer-num {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--royal-purple);
-        }
-
-        .timer-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            color: #888;
-            margin-top: 5px;
-        }
-
-        /* --- SECTIONS --- */
         .section { 
             background: white;
-            margin: 25px auto; 
+            margin: 20px auto; 
             max-width: 500px; 
-            padding: 35px 25px; 
+            padding: 35px 20px; 
             border-radius: 20px;
             border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            position: relative;
+            z-index: 5;
         }
 
         .btn { 
@@ -152,9 +146,8 @@
 
         .bottom-nav {
             position: fixed; bottom: 0; width: 100%;
-            background: white;
-            display: flex; justify-content: space-around;
-            padding: 18px 0; border-top: 1px solid var(--gold-accent);
+            background: white; display: flex; justify-content: space-around;
+            padding: 18px 0; border-top: 1px solid var(--gold);
             z-index: 1000;
         }
         .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.8rem; font-weight: 600; }
@@ -162,35 +155,19 @@
 </head>
 <body>
 
-    <div class="stars-container" id="starField"></div>
+    <div class="decor-container" id="decorField"></div>
 
     <div class="invitation-top" id="home">
         You are cordially invited for the wedding reception of
     </div>
 
-    <div class="diya-row">
-        <svg class="diya-svg" viewBox="0 0 100 100">
-            <path d="M20 70 Q50 95 80 70 Q80 50 50 50 Q20 50 20 70" fill="#8B4513"/>
-            <path d="M50 15 Q45 40 50 50 Q55 40 50 15" fill="#FF4500">
-                <animate attributeName="fill" values="#FF4500;#FFD700;#FF4500" dur="1s" repeatCount="indefinite" />
-            </path>
-        </svg>
-        <svg class="diya-svg" viewBox="0 0 100 100">
-            <path d="M20 70 Q50 95 80 70 Q80 50 50 50 Q20 50 20 70" fill="#8B4513"/>
-            <path d="M50 15 Q45 40 50 50 Q55 40 50 15" fill="#FF4500">
-                <animate attributeName="fill" values="#FF4500;#FFD700;#FF4500" dur="0.8s" repeatCount="indefinite" />
-            </path>
-        </svg>
-    </div>
-
     <header>
         <div class="names-display">
-            <span class="initial-group"><span class="golden-j">J</span>egadeesan</span>
-            <span style="opacity: 0.6;">&</span>
-            <span class="initial-group"><span class="golden-j">J</span>anani</span>
+            <span><span class="golden-j">J</span>egadeesan</span>
+            <span style="font-size: 0.6em; opacity: 0.5;">&</span>
+            <span><span class="golden-j">J</span>anani</span>
         </div>
-        
-        <div style="letter-spacing: 5px; font-weight: 300; color: #555;"> 28 MAY 2026</div>
+        <div style="letter-spacing: 5px; font-weight: 300; color: #666; margin-top: 10px;">MAY 2026</div>
 
         <div id="timer-box">
             <div class="timer-unit"><span class="timer-num" id="days">00</span><span class="timer-label">Days</span></div>
@@ -201,41 +178,44 @@
     </header>
 
     <section class="section" id="details">
-        <h2 style="font-family: 'Great Vibes'; font-size: 2.8rem; color: var(--royal-purple);">Event Details</h2>
+        <h2 style="font-family: 'Great Vibes'; font-size: 2.8rem; color: var(--royal-purple); margin: 0 0 15px;">Event Details</h2>
         <p><strong>RECEPTION</strong><br>Thursday, 28-May-2026 | 6:00 PM<br>Ranjan Mahal, Vellore</p>
-        <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">Navigate to Mahal</a>
+        <a href="https://share.google/LQMSGszKMSwAHp4c7" target="_blank" class="btn">View Location</a>
         <hr style="opacity: 0.1; margin: 25px auto; width: 60%;">
         <p><strong>MARRIAGE</strong><br>Friday, 29-May-2026 | 6:30 AM<br>Vellore Fort Temple</p>
-        <a href="https://share.google/q5qngUrx8wuOqvQAw" target="_blank" class="btn">Navigate to Temple</a>
-    </section>
-
-    <section class="section" id="rsvp">
-        <h2 style="font-family: 'Great Vibes'; font-size: 2.8rem; color: var(--royal-purple);">RSVP</h2>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpmHc4kP5G3FfzuSjM17U2vxWOTuV9x1Ix0Md1-ZniEpWNaw/viewform" target="_blank" class="btn">Confirm Attendance</a>
     </section>
 
     <nav class="bottom-nav">
         <a href="#home">HOME</a>
         <a href="#details">DETAILS</a>
-        <a href="#rsvp">RSVP</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpmHc4kP5G3FfzuSjM17U2vxWOTuV9x1Ix0Md1-ZniEpWNaw/viewform">RSVP</a>
     </nav>
 
     <script>
-        // Star Generation
-        const starField = document.getElementById('starField');
-        for (let i = 0; i < 60; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.width = star.style.height = Math.random() * 4 + 'px';
-            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-            starField.appendChild(star);
+        // Generate Marigolds and Mini Diyas
+        const decorField = document.getElementById('decorField');
+        const colors = ['#FF8C00', '#FFD700']; // Orange and Yellow
+
+        for (let i = 0; i < 40; i++) {
+            const isFlower = Math.random() > 0.3;
+            const item = document.createElement('div');
+            
+            if (isFlower) {
+                item.className = 'flower';
+                item.style.color = colors[Math.floor(Math.random() * colors.length)];
+            } else {
+                item.className = 'mini-diya';
+            }
+
+            item.style.left = Math.random() * 100 + '%';
+            item.style.animationDelay = Math.random() * 10 + 's';
+            item.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            decorField.appendChild(item);
         }
 
-        // Countdown Timer
+        // Timer Function
         const weddingDate = new Date("May 29, 2026 06:30:00").getTime();
-        setInterval(function() {
+        setInterval(() => {
             const now = new Date().getTime();
             const diff = weddingDate - now;
             if (diff > 0) {
